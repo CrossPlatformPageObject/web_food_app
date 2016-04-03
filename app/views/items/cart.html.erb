@@ -1,0 +1,7 @@
+<% @cart['items'].each do |item|%>
+    <br>  <%= item['name'] %> &nbsp; <%=  item['price'] %>
+<%end%>
+<h2> Total Price :  </h2>
+<%= @cart['total_price'] %>
+
+

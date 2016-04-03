@@ -1,3 +1,7 @@
 <% @items.each do |item|%>
     <%= link_to item['name'], show_path(item['name']) %></p></a>
 <%end%>
+
+<p>
+  <%= link_to 'view cart', items_cart_path %>
+</p>
