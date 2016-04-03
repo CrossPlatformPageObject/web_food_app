@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 	end
 
 	def index
-		@items = @@items.nil? ? @items : set_items
+		 @items = @@items.empty? ? set_items : @@items
 	end
 
 	def show
