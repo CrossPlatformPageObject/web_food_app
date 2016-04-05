@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	get 'items/index'
 	get 'items/cart'
 	get 'items/payment_pref'
+	get 'items/checkout' => 'items#checkout', as: :checkout
 	post 'items/save_payment_pref' => 'items#save_payment_pref', as: :save_payment_pref
 	get 'items/:name' => 'items#show', as: :show
 	get 'items/add/:name' => 'items#add', as: :add

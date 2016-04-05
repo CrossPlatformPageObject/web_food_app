@@ -2,13 +2,19 @@ require 'json'
 require 'pry'
 
 class ItemsController < ApplicationController
-	@@items = {}
-  @@payment_preference = 'CASH'
+	@@items              = {}
+	@@payment_preference = 'CASH'
+
 	def set_items
-		file_path        = Rails.root.join('resources', 'items.json').to_s
-		items            = JSON.parse(File.read(file_path))
-		@@items          = items['items']
-		session.delete('items')
+		file_path = Rails.root.join('resources', 'items.json').to_s
+		items     = JSON.parse(File.read(file_path))
+		@@items   = items['items']
+		clear_and_intialize_session
+	end
+
+	def clear_and_intialize_session
+		session.delete('items') if session.respond_to? 'items'
+		session.delete('cart') if session.respond_to? 'cart'
 		session['items'] = []
 	end
 
@@ -35,6 +41,7 @@ class ItemsController < ApplicationController
 			price += item['price']
 		end
 		@cart['total_price'] = price
+		session['cart']      = @cart
 		@cart
 	end
 
@@ -43,8 +50,12 @@ class ItemsController < ApplicationController
 
 	def save_payment_pref
 		@@payment_preference = params['payment']
-		flash[:success]= "Payment preference saved: #{@@payment_preference}"
-		puts "Payment saved: #{@@payment_preference}"
+		flash[:success]      = "Payment preference saved: #{@@payment_preference}"
 		redirect_to items_index_path
 	end
+
+	def checkout
+		(@@payment_preference == 'CASH') ? render 'summary' : render 'credit_card'
+	end
+
 end
