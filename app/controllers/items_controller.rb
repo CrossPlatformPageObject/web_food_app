@@ -3,7 +3,7 @@ require 'pry'
 
 class ItemsController < ApplicationController
 	@@items = {}
-
+  @@payment_preference = 'CASH'
 	def set_items
 		file_path        = Rails.root.join('resources', 'items.json').to_s
 		items            = JSON.parse(File.read(file_path))
@@ -36,5 +36,15 @@ class ItemsController < ApplicationController
 		end
 		@cart['total_price'] = price
 		@cart
+	end
+
+	def payment_pref
+	end
+
+	def save_payment_pref
+		@@payment_preference = params['payment']
+		flash[:success]= "Payment preference saved: #{@@payment_preference}"
+		puts "Payment saved: #{@@payment_preference}"
+		redirect_to items_index_path
 	end
 end

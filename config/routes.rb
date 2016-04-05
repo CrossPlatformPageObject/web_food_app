@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 	get 'items/index'
-
 	get 'items/cart'
-
+	get 'items/payment_pref'
+	post 'items/save_payment_pref' => 'items#save_payment_pref', as: :save_payment_pref
 	get 'items/:name' => 'items#show', as: :show
 	get 'items/add/:name' => 'items#add', as: :add
+
+
 
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".

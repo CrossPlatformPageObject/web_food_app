@@ -1,0 +1,10 @@
+<h1>Payment Preference</h1>
+
+<%= form_tag('/items/save_payment_pref', method: 'post') do %>
+    <%= radio_button_tag(:payment, 'CASH') %>
+    <%= label_tag(:payment_cod, 'Cash on delivery') %>
+    <%= radio_button_tag(:payment, 'CREDIT') %>
+    <%= label_tag(:payment_credit_card, 'Credit Card') %>
+    <%= submit_tag('Save') %>
+<%end%>
+
