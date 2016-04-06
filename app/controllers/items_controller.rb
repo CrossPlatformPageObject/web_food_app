@@ -9,12 +9,13 @@ class ItemsController < ApplicationController
 		file_path = Rails.root.join('resources', 'items.json').to_s
 		items     = JSON.parse(File.read(file_path))
 		@@items   = items['items']
-		clear_and_intialize_session
+		clear_and_initialize_session
 	end
 
-	def clear_and_intialize_session
-		session.delete('items') if session.respond_to? 'items'
-		session.delete('cart') if session.respond_to? 'cart'
+	def clear_and_initialize_session
+		session.delete('items') if session.key? 'items'
+		session.delete('cart') if session.key? 'cart'
+		session.delete('user_details') if session.key? 'user_details'
 		session['items'] = []
 	end
 
@@ -55,7 +56,28 @@ class ItemsController < ApplicationController
 	end
 
 	def checkout
-		(@@payment_preference == 'CASH') ? render 'summary' : render 'credit_card'
+		render 'user_details'
 	end
 
+	def save_user_details
+		user_details            = {}
+		user_details['name']    = params['name']
+		user_details['address'] = params['address']
+		session['user_details'] = user_details
+		if (@@payment_preference == 'CASH') then
+			render 'summary'
+		else
+			render 'credit_card'
+		end
+	end
+
+	def save_credit_card_details
+		# show message as payment successful if  @@payment_preference = 'CREDIT'
+		render 'summary'
+	end
+
+	def summary
+		@cart         = session['cart']
+		@user_details = session['user_details']
+	end
 end

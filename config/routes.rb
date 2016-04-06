@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 	get 'items/payment_pref'
 	get 'items/checkout' => 'items#checkout', as: :checkout
 	post 'items/save_payment_pref' => 'items#save_payment_pref', as: :save_payment_pref
+	post 'items/save_credit_card_details' => 'items#save_credit_card_details', as: :save_credit_card_details
+	post 'items/save_user_details' => 'items#save_user_details', as: :save_user_details
 	get 'items/:name' => 'items#show', as: :show
 	get 'items/add/:name' => 'items#add', as: :add
 

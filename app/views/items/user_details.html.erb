@@ -1,0 +1,10 @@
+<h1> User Details </h1>
+
+
+<%= form_tag('/items/save_user_details', method: 'post') do %>
+    <%= label_tag(:name,'Enter name') %>
+    <%= text_field_tag(:name) %>
+    <%= label_tag(:address,'Enter address' ) %>
+    <%= text_field_tag(:address) %>
+    <%= submit_tag('Proceed for Payment') %>
+<%end%>
