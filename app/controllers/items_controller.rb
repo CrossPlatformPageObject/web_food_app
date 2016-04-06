@@ -50,9 +50,11 @@ class ItemsController < ApplicationController
 	end
 
 	def save_payment_pref
-		@@payment_preference = params['payment']
-		flash[:success]      = "Payment preference saved: #{@@payment_preference}"
-		redirect_to items_index_path
+		if ( params['payment'] == 'CASH') then
+			render 'summary'
+		else
+			render 'credit_card'
+		end
 	end
 
 	def checkout
@@ -64,15 +66,10 @@ class ItemsController < ApplicationController
 		user_details['name']    = params['name']
 		user_details['address'] = params['address']
 		session['user_details'] = user_details
-		if (@@payment_preference == 'CASH') then
-			render 'summary'
-		else
-			render 'credit_card'
-		end
+		render 'payment_pref'
 	end
 
 	def save_credit_card_details
-		# show message as payment successful if  @@payment_preference = 'CREDIT'
 		render 'summary'
 	end
 
