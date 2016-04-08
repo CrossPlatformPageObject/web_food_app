@@ -1,3 +1,5 @@
+<h1> Your Purchased Items: </h1>
+
 <% @cart['items'].each do |item|%>
     <br>  <%= item['name'] %> &nbsp; <%=  item['price'] %>
 <%end%>
