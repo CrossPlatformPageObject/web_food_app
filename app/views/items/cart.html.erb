@@ -1,13 +1,27 @@
-<h1> Your Purchased Items: </h1>
 
-<% @cart['items'].each do |item|%>
-    <br>  <%= item['name'] %> &nbsp; <%=  item['price'] %>
-<%end%>
-<h2> Total Price :  </h2>
-<%= @cart['total_price'] %>
+<h4> Your Purchased Items: </h4>
+
+<table class="responsive-table highlight">
+  <thead>
+  <tr>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @cart['items'].each do |item| %>
+      <tr>
+        <td> <%= item['name'] %> </td>
+        <td> <%= item['price'] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h5> Total Price : <%= @cart['total_price'] %> </h5>
+
 
 <p>
-  <%= link_to 'Checkout',  checkout_path %>
+ &nbsp;  <%= link_to 'Checkout', checkout_path, :class=> 'waves-effect waves-light btn', :id => 'checkout' %>
 </p>
-
-

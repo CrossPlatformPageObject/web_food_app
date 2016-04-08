@@ -1,8 +1,21 @@
-<h1> Food Items: </h1>
-<% @items.each do |item|%>
-    <%= link_to item['name'], show_path(item['name']) %></p></a>
-<%end%>
 
-<p>
-  <%= link_to 'view cart', items_cart_path %>
-</p>
+<h4> Food Items: </h4>
+
+<table class="responsive-table highlight">
+  <thead>
+  <tr>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @items.each do |item| %>
+      <tr>
+        <td><a><%= link_to item['name'], show_path(item['name']) %></p></a></td>
+        <td> <%=  item['price']%></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

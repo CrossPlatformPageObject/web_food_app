@@ -1,9 +1,22 @@
-<h1>Credit Card Payment</h1>
+<h5>Credit Card Payment</h5>
 
 <%= form_tag('/items/save_credit_card_details', method: 'post') do %>
-    <%= label_tag(:credit_card_number,'Enter 10 digit credit card number: ') %>
-    <%= text_field_tag(:credit_card_number) %>
-    <%= label_tag(:cvv_number,'Enter CVV number: ' ) %>
-    <%= text_field_tag(:cvv_number) %>
-    <%= submit_tag('Submit') %>
+
+    &nbsp;  <%= label_tag(:card_number, 'Enter Card number:') %>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="credit_card_number" name="credit_card" type="text" length="10">
+      </div>
+    </div>
+
+    &nbsp;  <%= label_tag(:cvv_label, 'Enter CVV number:') %>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="cvv_number" name="cvv" type="text" length="2">
+      </div>
+    </div>
+
+    &nbsp;  &nbsp;
+    <%= submit_tag('Submit', :id=> 'submit_credit_card', :class=> 'btn waves-effect waves-light', :name=> 'submit') %>
+
 <%end%>

@@ -1,19 +1,16 @@
-<h1>Food Description</h1>
+
+<h5>Food Details</h5>
+
+<div class="row">
+  <div class="col s12" center-align ><b><%= @item['name'] %> </b></div>
+  <div class="col s12" ><b> &nbsp; </b></div>
+  <div class="col s12 container">Contains, Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum Lorel Epsum </div>
+  <div class="col s12" ><b> &nbsp; </b></div>
+  <div class="col s6"> <b>Price:  Rs.<%= @item['price'] %> </b></div>
+</div>
 
 <p>
-<h2>Food:</h2>
-<%= @item['name'] %>
-</p>
-
-<p>
-<h2>Description:</h2>
-
-</p>
-
-<p><%= @item['price'] %></p>
-
-<p>
-   <%= link_to 'Add To Cart', add_path(@item['name']), :id => 'add_to_cart' %>
+   <%= link_to 'Add To Cart', add_path(@item['name']), :id => 'add_to_cart', :class=> 'waves-effect waves-light btn' %>
 </p>
 
 

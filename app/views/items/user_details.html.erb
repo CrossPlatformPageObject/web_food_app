@@ -1,10 +1,20 @@
-<h1> User Details </h1>
-
+<h5> Enter details: </h5>
 
 <%= form_tag('/items/save_user_details', method: 'post') do %>
-    <%= label_tag(:name,'Enter name') %>
-    <%= text_field_tag(:name) %>
-    <%= label_tag(:address,'Enter address' ) %>
-    <%= text_field_tag(:address) %>
-    <%= submit_tag('Proceed for Payment') %>
-<%end%>
+    &nbsp;  <%= label_tag(:name, 'Enter name') %>
+    <div class="row">
+      <div class="col s6">
+        <%= text_field_tag :name, nil, name: 'name', :placeholder => 'your name' %>
+      </div>
+    </div>
+
+    &nbsp;  <%= label_tag(:address, 'Enter address') %>
+    <div class="row">
+      <div class="col s12">
+        <%= text_field_tag :address, nil, name: 'name', :placeholder => 'your address' %>
+      </div>
+    </div>
+
+    &nbsp;  &nbsp;
+    <%= submit_tag('Proceed for Payment', :id=> 'payment_button', :class=> 'btn waves-effect waves-light', :name=> 'submit') %>
+<% end %>
