@@ -30,7 +30,8 @@ class ItemsController < ApplicationController
 	def add
 		item = @@items.find { |item| item['name'] == params['name'] }
 		session['items'] << item
-		redirect_to items_index_path
+		# redirect_to items_index_path
+		redirect_to :back
 	end
 
 	def cart
