@@ -47,12 +47,9 @@ class ItemsController < ApplicationController
 		@cart
 	end
 
-	def payment_pref
-	end
-
 	def save_payment_pref
 		if ( params['payment'] == 'CASH') then
-			render 'summary'
+			redirect_to items_summary_path
 		else
 			render 'credit_card'
 		end
@@ -71,7 +68,7 @@ class ItemsController < ApplicationController
 	end
 
 	def save_credit_card_details
-		render 'summary'
+		redirect_to items_summary_path
 	end
 
 	def summary

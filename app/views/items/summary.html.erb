@@ -1,9 +1,30 @@
-<h1>Purchase Summary </h1>
 
-Hi,
+<h4>Purchase Summary </h4>
 
-<h2> Purchased Items: </h2>
+Hi, <%=  @user_details['name'] %>
 
+<h5> Purchased Items: </h5>
+<table class="responsive-table highlight">
+  <thead>
+  <tr>
+    &nbsp;
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @cart['items'].each do |item| %>
+      <tr>
+        &nbsp;
+        <td class="item_name"> <%= item['name'] %> </td>
+        <td> <%= item['price'] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+&nbsp; <h6><b>   &nbsp;  Total Price : <%= @cart['total_price'] %> </b></h6>
 
 
 
