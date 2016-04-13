@@ -12,7 +12,7 @@
   <tbody>
   <% @items.each do |item| %>
       <tr>
-        <td><a><%= link_to item['name'], show_path(item['name']) %></p></a></td>
+        <td><a><%= link_to item['name'], show_path(item['name']), :class => 'food_item' %></p></a></td>
         <td> <%=  item['price']%></td>
       </tr>
   <% end %>
