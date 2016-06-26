@@ -1,6 +1,6 @@
 # Ruby_food_app
 
-This is sample app created for demostration of bulding framework for cross platform. 
+This is sample app created for demostration of bulding automation framework for [cross platform](https://github.com/CrossPlatformPageObject/cross-platform-single-page-example). 
 
 Developed with help of [Avinash](https://github.com/avinash-pandey).
 
